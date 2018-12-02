@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from django.db.models import Q
 
 
 from rest_framework.serializers import (
@@ -56,3 +57,36 @@ class UsuarioSerializer(ModelSerializer):
         user_obj.save()
 
         return validated_data
+
+class LoginUsuarioSerializer(ModelSerializer):
+    token = CharField(allow_blank=True, read_only=True)
+    username=CharField(label='Usuario')
+    password=CharField(label='Contraseña')
+    class Meta:
+        model = User
+
+        fields=[
+            'username',
+            'password',
+            'token'          
+        ]
+        
+        extra_kwargs={"password":
+                        {"write_only":True}
+                        }
+    def validate(self,data):
+        user_obj=None
+        username=data["username"]
+        password=data["password"]
+
+        user = User.objects.filter(
+            Q(username=username)).distinct()
+        if user.exists() and user.count() ==1:
+            user_obj=user.first()
+        else:
+            raise ValidationError("El usuario no existe.")
+        if user_obj:
+            if not user_obj.check_password(password):
+                raise ValidationError("Contraseña incorrecta")
+        data["token"]="TOKEN"
+        return data
