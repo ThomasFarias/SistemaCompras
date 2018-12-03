@@ -1,6 +1,8 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{%extends 'index.html'%}
+{% block formLogin %}
 
-<form method="POST" id="formulario" enctype="multipart/form-data" name="formulario">
+
+<form method="POST" id="formularioLogin" enctype="multipart/form-data" name="formulario">
     {% csrf_token %}
 <table>
     <tr>
@@ -17,23 +19,8 @@
 </table>   
 <input type="submit" id="agregar" value="Agregar" name="agregar"> 
 </form>
-    <script>
-
-         $("#formulario").submit(function(e){
-            	var data = new FormData(this);
-            $.ajax({
-                url:"http://localhost:8000/back/login",
-                type:'POST',
-                data:data,
-               processData: false, 
-       			contentType: false,
-                
-                success: function (e) {
-                    
-                }
-            })
-        })
-        </script>
     
+    
+{% endblock  %}
 
 

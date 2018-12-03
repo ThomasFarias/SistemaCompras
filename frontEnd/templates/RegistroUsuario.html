@@ -1,7 +1,9 @@
+{%extends 'index.html'%}
+{% block RegistroUsuario %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<form method="POST" id="formulario" enctype="multipart/form-data" name="formulario">
+<form method="POST" id="formularioUsuario" enctype="multipart/form-data" name="formulario">
     {% csrf_token %}
 <table>
     <tr>
@@ -22,23 +24,8 @@
 </table>   
 <input type="submit" id="agregar" value="Agregar" name="agregar"> 
 </form>
-    <script>
-
-         $("#formulario").submit(function(e){
-            	var data = new FormData(this);
-            $.ajax({
-                url:"http://localhost:8000/back/registrar",
-                type:'POST',
-                data:data,
-               processData: false, 
-       			contentType: false,
-                
-                success: function (e) {
-                    
-                }
-            })
-        })
-        </script>
+    
     
 
 
+    {% endblock  %}

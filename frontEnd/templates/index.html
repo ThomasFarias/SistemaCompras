@@ -4,7 +4,7 @@
 	<head>
 		
 		
-		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		 <meta charset="utf-8">
 		 <title>Mis Perris!</title>
 		 <meta name="description" content="Pagina completa con Flexbox"><!--Utilizamos el descriptor en meta para apoyar la busqueda de contenidos en la web-->
@@ -30,7 +30,10 @@
 				   
 
           			<div class="forma">	
-
+						{% block RegistroUsuario %}
+						{% endblock %}
+						{% block formLogin %}
+						{% endblock %}
 
 						
 					  </div>
@@ -41,5 +44,42 @@
 		
 		<footer> Desarrollo Web y Mobile  </footer>
 	</body>
+	<script>
+
+		$("#formularioUsuario").submit(function(e){
+		
+			   var data = new FormData(this);
+		   $.ajax({
+			   url:"http://localhost:8000/back/registrar",
+			   type:'POST',
+			   data:data,
+			  processData: false, 
+				  contentType: false,
+			   
+			   success: function (e) {
+				   
+				   
+			   }
+		   })
+	   })
+	   </script>
+
+<script>
+
+	$("#formularioLogin").submit(function(e){
+		   var data = new FormData(this);
+	   $.ajax({
+		   url:"http://localhost:8000/back/login",
+		   type:'POST',
+		   data:data,
+		  processData: false, 
+			  contentType: false,
+		   
+		   success: function (e) {
+			   
+		   }
+	   })
+   })
+   </script>
 	
 </html>
