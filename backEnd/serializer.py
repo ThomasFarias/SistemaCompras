@@ -31,12 +31,13 @@ class UsuarioSerializer(ModelSerializer):
         extra_kwargs={"password":
                         {"write_only":True}
                         }
+        
     def validate(self,data):
         email=data['email']
         user=User.objects.filter(email=email)
         if user.exists():
             raise ValidationError("Este correo ya esta vinculado a un usuario.")
-        return    
+        return  data  
     def validate_password2(self,value):
         data=self.get_initial()
         password1=data.get("password")
@@ -59,7 +60,6 @@ class UsuarioSerializer(ModelSerializer):
         return validated_data
 
 class LoginUsuarioSerializer(ModelSerializer):
-    token = CharField(allow_blank=True, read_only=True)
     username=CharField(label='Usuario')
     password=CharField(label='Contraseña')
     class Meta:
@@ -67,8 +67,7 @@ class LoginUsuarioSerializer(ModelSerializer):
 
         fields=[
             'username',
-            'password',
-            'token'          
+            'password'       
         ]
         
         extra_kwargs={"password":
@@ -88,5 +87,5 @@ class LoginUsuarioSerializer(ModelSerializer):
         if user_obj:
             if not user_obj.check_password(password):
                 raise ValidationError("Contraseña incorrecta")
-        data["token"]="TOKEN"
+       
         return data
