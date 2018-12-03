@@ -1,0 +1,39 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<form method="POST" id="formulario" enctype="multipart/form-data" name="formulario">
+    {% csrf_token %}
+<table>
+    <tr>
+        <td>usuario</td><td><input type="text" id="username" name="username" required></td>
+    </tr>
+    <tr>
+        <td>contraseña</td><td><input type="text" id="password" name="password" required></td>
+    </tr>
+
+            </tr>
+    
+
+    
+</table>   
+<input type="submit" id="agregar" value="Agregar" name="agregar"> 
+</form>
+    <script>
+
+         $("#formulario").submit(function(e){
+            	var data = new FormData(this);
+            $.ajax({
+                url:"http://localhost:8000/back/login",
+                type:'POST',
+                data:data,
+               processData: false, 
+       			contentType: false,
+                
+                success: function (e) {
+                    
+                }
+            })
+        })
+        </script>
+    
+
+

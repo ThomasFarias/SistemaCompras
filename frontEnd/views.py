@@ -10,3 +10,7 @@ def Index(request):
 def registroUsuario(request):
     form=FormRegistroUsuario()
     return render(request,"RegistroUsuario.html",{'form':form})
+
+
+def IniciarSesion(request):
+    return render(request,'login.html')

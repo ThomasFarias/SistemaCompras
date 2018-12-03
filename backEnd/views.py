@@ -16,6 +16,7 @@ User = get_user_model()
 class RegistrarUsuarioCreateAPIView(CreateAPIView):        
     serializer_class=UsuarioSerializer
 
+
     
     
 
