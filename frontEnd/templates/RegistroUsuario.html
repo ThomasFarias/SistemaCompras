@@ -3,42 +3,40 @@
 
 <form method="POST" id="formulario" enctype="multipart/form-data" name="formulario">
     {% csrf_token %}
-<table>
-    <tr>
-        <td>usuario</td><td><input type="text" id="username" name="username" required></td>
-    </tr>
-    <tr>
-        <td>contraseña</td><td><input type="text" id="password" name="password" required></td>
-    </tr>
-    <tr>
-            <td>validar contraseña</td><td><input type="text" id="password2 " name="password2" required> </td>
-        </tr>
+    <table>
         <tr>
-                <td>email</td><td><input type="email" id="email " name="email" required> </td>
-            </tr>
-    
+            <td>usuario</td>
+            <td><input type="text" id="username" name="username" required></td>
+        </tr>
 
-    
-</table>   
-<input type="submit" id="agregar" value="Agregar" name="agregar"> 
+        <tr>
+            <td>contraseña</td>
+            <td><input type="text" id="password" name="password" required></td>
+        </tr>
+
+        <tr>
+            <td>validar contraseña</td>
+            <td><input type="text" id="password2 " name="password2" required></td>
+        </tr>
+        
+        <tr>
+            <td>email</td>
+            <td><input type="email" id="email " name="email" required> </td>
+        </tr>
+    </table>
+
+    <input type="submit" id="agregar" value="Agregar" name="agregar"> 
 </form>
     <script>
-
-         $("#formulario").submit(function(e){
-            	var data = new FormData(this);
-            $.ajax({
-                url:"http://localhost:8000/back/registrar",
-                type:'POST',
-                data:data,
-               processData: false, 
-       			contentType: false,
-                
-                success: function (e) {
-                    
-                }
-            })
+        $("#formulario").submit(function(e){
+            var data = new FormData(this);
+                $.ajax({
+                    url:"http://localhost:8000/back/registrar",
+                    type:'POST',
+                    data:data,
+                    processData: false, 
+                    contentType: false,
+                    success: function (e) {}
+                })
         })
-        </script>
-    
-
-
+    </script>
