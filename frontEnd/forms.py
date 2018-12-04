@@ -145,4 +145,4 @@ class FormProducto(forms.ModelForm):
 class ListaComprasForm(PopRequestMixin, CreateUpdateAjaxMixin, forms.ModelForm):
     class Meta:
         model = Lista
-        fields = ['nombre_lista','codigo_usuario']
+        fields = ['nombre_lista']
