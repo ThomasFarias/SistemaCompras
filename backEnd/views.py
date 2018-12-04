@@ -6,6 +6,7 @@ from .serializer import  *
 from .models import Tienda
 from rest_framework.parsers import JSONParser
 from django.contrib.auth import get_user_model
+
 from rest_framework.generics import (
     CreateAPIView
 
@@ -28,6 +29,7 @@ class ObtenerUsuariosAPIView(APIView):
         return Response(serializer.data)
 
 class TiendaView(APIView):
+    parser_classes = (JSONParser,)
     def get(self,request):
         tiendas=Tienda.objects.all()
         serializer=TiendaSerializer(tiendas,many=True)
@@ -40,6 +42,7 @@ class TiendaView(APIView):
         
 
 class EstadoTiendaView(APIView):
+    parser_classes = (JSONParser,)
     def get(self,request):
         estados=EstadoTienda.objects.all()
         serializer=EstadoSerializer(estados,many=True)
@@ -49,13 +52,15 @@ class EstadoTiendaView(APIView):
         serializer=EstadoSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+            return Response(serializer.data)
         else:
             serializer=EstadoSerializer()
             return Response(serializer.data)
 
 class ProductoView(APIView):
+    parser_classes = (JSONParser,)
     def get(self,request):
-        productos=Producto.objects.all()
+        productoss=Producto.objects.all()
         serializer=ProductoSerializer(productos,many=True)
         return Response(serializer.data)
 
@@ -63,6 +68,7 @@ class ProductoView(APIView):
         serializer=ProductoSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+            return Response(serializer.data)
         else:
             serializer=ProductoSerializer()
             return Response(serializer.data)
