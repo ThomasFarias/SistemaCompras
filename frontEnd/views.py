@@ -3,6 +3,10 @@ from .forms import *
 from django.contrib.auth import authenticate, logout as django_logout
 from django.contrib.auth.decorators import login_required
 from backEnd.models import Producto, Lista
+from bootstrap_modal_forms.mixins import PassRequestMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from django.views import generic
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -10,6 +14,18 @@ from backEnd.models import Producto, Lista
 def Index(request):
 	active_tab = 'tab1'
 	return render(request,"index_bienvenida.html",{'active_tab':active_tab})
+
+def AgregarLista(request):
+	return render(request,"agregarLista.html")
+
+
+class AgregarListaView(PassRequestMixin, SuccessMessageMixin,
+                     generic.CreateView):
+    template_name = 'agregarLista.html'
+    form_class = ListaComprasForm
+    success_message = 'EXITO: Ha agregado una lista nueva.'
+    success_url = reverse_lazy('comprar')
+
 
 def logout(request):
 	active_tab = 'tab1'

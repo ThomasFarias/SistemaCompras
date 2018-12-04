@@ -22,8 +22,7 @@ Released   : 20130902
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-
-
+	
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -31,6 +30,7 @@ Released   : 20130902
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 <link href="{% static '/css/default.css' %}" rel="stylesheet" type="text/css" media="all" />
 <link href="{% static '/css/fonts.css' %}" rel="stylesheet" type="text/css" media="all" />
+<script src="{% static '/js/jquery.bootstrap.modal.forms.min.js' %}"></script> 
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
@@ -64,7 +64,10 @@ Released   : 20130902
 
 				<a href="{%url 'agregarTiendas'%}" accesskey="2" title="">Tiendas</a></li>
 
-				<li><a href="{%url 'comprar'%}" accesskey="3" title="">Comprar</a></li>
+				<li class=" 
+					{% if active_tab == 'tab3' %}
+						current_page_item 
+					{% endif %}"><a href="{%url 'comprar'%}" accesskey="3" title="">Lista de Compras</a></li>
 				{% if user.is_authenticated == False %}
 				<li class=" 
 					{% if active_tab == 'tab4' %}
