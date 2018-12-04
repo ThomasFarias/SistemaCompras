@@ -8,6 +8,7 @@ urlpatterns=[
     url(r'^logout$',views.logout,name="logout"),
     url(r'^comprar$',views.Comprar,name="comprar"),
     url(r'^agregarTiendas$',views.Tiendas,name="agregarTiendas"),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
    
 
 ]
