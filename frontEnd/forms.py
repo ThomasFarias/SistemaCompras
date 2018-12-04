@@ -3,8 +3,8 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Div, HTML
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe     
-from backEnd.models import Tienda
-
+from backEnd.models import Tienda, Lista
+from bootstrap_modal_forms.mixins import PopRequestMixin, CreateUpdateAjaxMixin
 
 class FormRegistroUsuario(forms.ModelForm):
 	password2 =forms.CharField(widget=forms.PasswordInput(),label="Confirmar contraseña")
@@ -109,3 +109,8 @@ class FormTienda(forms.ModelForm):
 				)
 			),
 		)
+
+class ListaComprasForm(PopRequestMixin, CreateUpdateAjaxMixin, forms.ModelForm):
+    class Meta:
+        model = Lista
+        fields = ['nombre_lista']

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'frontEnd.apps.FrontendConfig',
     'crispy_forms',
     'social_django',
+    'bootstrap_modal_forms',
 ]
 
 MIDDLEWARE = [
