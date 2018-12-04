@@ -1,7 +1,8 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 # Create your models here.
-
+Cliente = get_user_model()
 
 
 class Tienda(models.Model):
@@ -13,6 +14,12 @@ class Tienda(models.Model):
 	ciudad=models.CharField(max_length=20)
 	estado=models.BooleanField(default=False)
 
+class Lista(models.Model):
+	codigo_lista=models.AutoField(primary_key=True)
+	nombre_lista=models.CharField(max_length=30)
+	codigo_usuario=models.ForeignKey(Cliente,on_delete=models.CASCADE)
+
+
 class Producto(models.Model):
 	codigo_prod=models.AutoField(primary_key=True)
 	nombre_producto=models.CharField(max_length=30,null=False)
@@ -20,5 +27,12 @@ class Producto(models.Model):
 	costo_real=models.IntegerField(null=True)    
 	notas=models.CharField(max_length=30,null=True)
 	tienda=models.ForeignKey(Tienda,on_delete=models.CASCADE,null=True)
+	codigo_lista=models.ForeignKey(Lista,on_delete=models.CASCADE)
+
+
+
+
+
+
 
 
