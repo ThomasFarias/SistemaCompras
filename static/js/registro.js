@@ -13,9 +13,11 @@ $('#formularioUsuario').submit(function(e)
 		data: $('#formularioUsuario').serialize(),
 		success: function() {
 			console.log('Usuario agregado con exito.');
+			alert('Se ha registrado exitosamente')
 		},
 		error: function(errorThrown){
 			console.log(errorThrown);
+			alert('ERROR AL REGISTRAR USUARIO')
 			}
 	});
 });

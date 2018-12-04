@@ -40,7 +40,13 @@ Released   : 20130902
 	<div id="header">
 		<div id="logo">
 			<img src= "{% static 'images/default_avatar.png' %}" height="128" width="128" />
-			<h1><a href="#">INVITADO</a></h1>
+			<h1><a href="#"> 
+				{% if user.is_authenticated %} 
+					{{ user }} 
+				{% else %} 
+					Invitado 
+				{% endif %}
+			</a></h1>
 			<span>Bienvenido </span>
 		</div>
 		<div id="menu">
