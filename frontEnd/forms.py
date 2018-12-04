@@ -3,7 +3,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Div, HTML
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe     
-from backEnd.models import Tienda
+from backEnd.models import Tienda, Producto
 
 
 class FormRegistroUsuario(forms.ModelForm):
@@ -101,6 +101,39 @@ class FormTienda(forms.ModelForm):
 				Div('direccion', ),
 				Div('region', ),
 				Div('ciudad',),
+				css_class = 'column'
+			),
+			Div(
+				ButtonHolder(
+						Submit('save', 'Agregar', css_class="BotonEnviar btn-secondary")
+				)
+			),
+		)
+
+class FormProducto(forms.ModelForm):
+	class Meta:
+		model = Producto
+		
+		fields = ('tienda','nombre_producto', 'costo_presupuestado','costo_real','notas')
+
+
+	def __init__(self, *args, submit_title="Enviar", **kwargs):
+		super().__init__(*args, **kwargs)
+		#user = super().save(commit=False) #snippet
+		self.helper=FormHelper()
+		self.helper.form_id= 'FormProducto'
+		self.fields['costo_real'].widget = forms.TextInput()
+		self.fields['costo_presupuestado'].widget = forms.TextInput()
+		
+		self.helper.layout = Layout(
+			
+			Div(
+				
+				Div('tienda',),
+				Div('nombre_producto', ),
+				Div('costo_presupuestado', ),
+				Div('costo_real',),
+				Div('notas',),
 				css_class = 'column'
 			),
 			Div(

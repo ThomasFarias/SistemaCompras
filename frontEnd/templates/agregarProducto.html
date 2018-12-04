@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+{% block agregarProducto %}
+{% load crispy_forms_tags %}
+<div id="agregar-tienda">
+			<div class="title">
+				<h1>Agregar Producto</h1>
+			</div>
+			<p>Ingrese los datos para agregar una nuevo producto al sistema de compras. </p>
+			{% crispy form %}
+
+		
+</div>
+{% endblock %}
