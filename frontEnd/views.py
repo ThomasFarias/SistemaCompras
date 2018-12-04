@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import *
 from django.contrib.auth import authenticate, logout as django_logout
 from django.contrib.auth.decorators import login_required
+from backEnd.models import Producto, Lista
 from bootstrap_modal_forms.mixins import PassRequestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import generic
@@ -47,6 +48,21 @@ def Comprar(request):
 		return render(request,"comprar.html",{'active_tab':active_tab})
 	else:
 		return render(request,"errorLogin.html",{'active_tab':active_tab})
+
+@login_required(login_url='login')
+def registroProducto(request,codigo):
+	form=FormProducto(request.POST)
+	if form.is_valid():		
+		lista=Lista.objects.get(codigo_lista=codigo)
+		data=form.cleaned_data
+		producto=Producto(nombre_producto=data.get("nombre_producto"),costo_presupuestado=data.get("costo_presupuestado"),costo_real=data.get("costo_real"),notas=data.get("notas"),tienda=data.get("tienda"),lista=lista)
+		producto.save()	
+		return render(request,'agregarProducto.html',{'form': form})	
+		
+	else:
+		form=FormProducto()
+		return render(request,'agregarProducto.html',{'form': form})
+
     
 def registroUsuario(request):
 	active_tab = 'tab5'

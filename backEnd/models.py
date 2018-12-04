@@ -23,11 +23,11 @@ class Lista(models.Model):
 class Producto(models.Model):
 	codigo_prod=models.AutoField(primary_key=True)
 	nombre_producto=models.CharField(max_length=30,null=False)
-	costo_presupuestado=models.IntegerField(null=True)
-	costo_real=models.IntegerField(null=True)    
-	notas=models.CharField(max_length=30,null=True)
-	tienda=models.ForeignKey(Tienda,on_delete=models.CASCADE,null=True)
-	codigo_lista=models.ForeignKey(Lista,on_delete=models.CASCADE)
+	costo_presupuestado=models.IntegerField(null=True, blank=True)
+	costo_real=models.IntegerField(null=True, blank=True)    
+	notas=models.CharField(max_length=30,null=True, blank=True)
+	tienda=models.ForeignKey(Tienda,on_delete=models.CASCADE,null=True, blank=True)
+	lista=models.ForeignKey(Lista,on_delete=models.CASCADE)
 
 
 

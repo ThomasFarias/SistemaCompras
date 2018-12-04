@@ -45,12 +45,15 @@ class TiendaView(APIView):
 
 class ProductoView(APIView):
 
+  
+
     def get(self,request):
-        productoss=Producto.objects.all()
+        productos=Producto.objects.all()
         serializer=ProductoSerializer(productos,many=True)
         return Response(serializer.data)
 
-    def post(self,request):
+    def post(self,request,codigo):
+       
         serializer=ProductoSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -58,7 +61,8 @@ class ProductoView(APIView):
         else:
             serializer=ProductoSerializer()
             return Response(serializer.data)
-    
+
+
 
 
 

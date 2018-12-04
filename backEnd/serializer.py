@@ -70,8 +70,8 @@ class TiendaSerializer(serializers.ModelSerializer):
 class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
-        fields = ('nombre_producto',
-                  'costo_presupuestado','costo_real','notas','tienda'
+        fields = ('lista','tienda','nombre_producto',
+                  'costo_presupuestado','costo_real','notas',
                  )
 
 
