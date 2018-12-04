@@ -92,14 +92,15 @@ class FormTienda(forms.ModelForm):
 		#user = super().save(commit=False) #snippet
 		self.helper=FormHelper()
 		self.helper.form_id= 'FormTienda'
+		
 		self.helper.layout = Layout(
 			
 			Div(
-				Div('nombre_tienda', css_class=""),
-				Div('nombre_sucursal', css_class=""),
-				Div('direccion', css_class=""),
-				Div('region', css_class=""),
-				Div('ciudad', css_class=""),
+				Div('nombre_tienda', css_id='nombre_tienda'),
+				Div('nombre_sucursal', css_id='nombre_sucursal'),
+				Div('direccion', css_id='direccion'),
+				Div('region', css_id='region'),
+				Div('ciudad', css_id='ciudad'),
 				css_class = 'column'
 			),
 			Div(
