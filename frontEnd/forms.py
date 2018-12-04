@@ -92,4 +92,19 @@ class FormTienda(forms.ModelForm):
 		#user = super().save(commit=False) #snippet
 		self.helper=FormHelper()
 		self.helper.form_id= 'FormTienda'
-       
+		self.helper.layout = Layout(
+			
+			Div(
+				Div('nombre_tienda', css_class=""),
+				Div('nombre_sucursal', css_class=""),
+				Div('direccion', css_class=""),
+				Div('region', css_class=""),
+				Div('ciudad', css_class=""),
+				css_class = 'column'
+			),
+			Div(
+				ButtonHolder(
+						Submit('save', 'Agregar', css_class="BotonEnviar btn-secondary")
+				)
+			),
+		)
