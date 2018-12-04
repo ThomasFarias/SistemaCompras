@@ -10,7 +10,7 @@ from rest_framework.generics import (
 
 )
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
-User = get_user_model()
+Cliente = get_user_model()
 # Create your views here.
 
 class RegistrarUsuarioCreateAPIView(CreateAPIView):        
@@ -22,7 +22,7 @@ class RegistrarUsuarioCreateAPIView(CreateAPIView):
 
 class ObtenerUsuariosAPIView(APIView):
     def get(self,request):
-        usuarios=User.objects.all()
+        usuarios=Cliente.objects.all()
         serializer=UsuarioSerializer(usuarios,many=True)
         return Response(serializer.data)
 

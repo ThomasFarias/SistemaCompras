@@ -1,26 +1,20 @@
-{%extends 'index.html'%}
+{% extends "index.html" %}
 {% block formLogin %}
+{% load crispy_forms_tags %}
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<form method="POST" id="formularioLogin" enctype="multipart/form-data" name="formulario">
-    {% csrf_token %}
-<table>
-    <tr>
-        <td>usuario</td><td><input type="text" id="username" name="username" required></td>
-    </tr>
-    <tr>
-        <td>contraseña</td><td><input type="text" id="password" name="password" required></td>
-    </tr>
-
-            </tr>
+<div id="registro">
+			<div class="title">
+				<h1>Iniciar Sesión</h1>
+			</div>
+				<p>Ingrese sus credenciales y haga click en "Ingresar"</p>
+				{% crispy form %}
+				{%if fail %}
+					<h4 style="color:red">Datos incorrectos.</h4>
+				{%endif%}
+		
+</div>
     
 
-    
-</table>   
-<input type="submit" id="agregar" value="Agregar" name="agregar"> 
-</form>
-    
-    
 {% endblock  %}
-
-

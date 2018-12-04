@@ -21,7 +21,9 @@ class FormRegistroUsuario(forms.ModelForm):
 		super().__init__(*args, **kwargs)
 		#user = super().save(commit=False) #snippet
 		self.helper=FormHelper()
-		self.fields['username'].label = 'Nombre de usuario'
+		self.helper.form_id= 'formularioUsuario'
+		self.fields['username'].label = 'Nombre de Usuario'
+		self.fields['email'].label = 'Correo Electronico'
 		self.fields['username'].help_text = None
 		self.fields['password'].label = 'Contraseña'
 		self.fields['password'].widget = forms.PasswordInput()
@@ -31,18 +33,50 @@ class FormRegistroUsuario(forms.ModelForm):
 		self.helper.layout = Layout(
 			
 			Div(
-				Div('username', css_class="col-sm-6"),
-				Div('email', css_class="col-sm-6"),
-				css_class = 'row'
+				Div('username', css_class=""),
+				Div('email', css_class=""),
+				Div('password', css_class=""),
+				Div('password2', css_class=""),
+				css_class = 'column'
 			),
+			Div(
+				ButtonHolder(
+						Submit('save', 'Enviar', css_class="BotonEnviar btn-secondary")
+				)
+			),
+		)
+
+class FormLogin(forms.ModelForm):
+
+
+	class Meta:
+		model = User
+		
+		fields = ('username', 'password')
+
+
+	def __init__(self, *args, submit_title="Enviar", **kwargs):
+		super().__init__(*args, **kwargs)
+		#user = super().save(commit=False) #snippet
+		self.helper=FormHelper()
+		self.helper.form_id= 'formLogin'
+		self.fields['username'].label = 'Nombre de Usuario'
+		self.fields['username'].help_text = None
+		self.fields['password'].label = 'Contraseña'
+		self.fields['password'].widget = forms.PasswordInput()
+		
+
+		self.helper.layout = Layout(
 			
 			Div(
-				Div('password', css_class="col-sm-6"),
-				Div('password2', css_class="col-sm-6"),
-				css_class = 'row'
+				Div('username', css_class=""),
+				Div('password', css_class=""),
+				css_class = 'column'
 			),
-			ButtonHolder(
-						Submit('save', 'Enviar')
-			)
+			Div(
+				ButtonHolder(
+						Submit('save', 'Ingresar', css_class="BotonEnviar btn-secondary")
+				)
+			),
 		)
        

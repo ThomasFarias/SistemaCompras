@@ -11,20 +11,15 @@ from rest_framework.serializers import (
     ValidationError
 )
 
-User = get_user_model()
+Cliente = get_user_model()
 
 class UsuarioSerializer(ModelSerializer):
-    username=CharField(label='Usuario')
-    password=CharField(label='Contraseña')
-    password2 =CharField(label='Confirmar contraseña')
-    email=EmailField(label='Correo Electronico')
     class Meta:
-        model = User
+        model = Cliente
 
         fields=[
             'username',
             'password',
-            'password2',
             'email',            
         ]
         
@@ -34,10 +29,11 @@ class UsuarioSerializer(ModelSerializer):
         
     def validate(self,data):
         email=data['email']
-        user=User.objects.filter(email=email)
-        if user.exists():
+        cliente=Cliente.objects.filter(email=email)
+        if cliente.exists():
             raise ValidationError("Este correo ya esta vinculado a un usuario.")
-        return  data  
+        return  data
+
     def validate_password2(self,value):
         data=self.get_initial()
         password1=data.get("password")
@@ -48,9 +44,10 @@ class UsuarioSerializer(ModelSerializer):
         
     def create(self, validated_data):
         username=validated_data['username']
+        print("CREANDO USUARIO")
         email=validated_data['email']
         password=validated_data['password']
-        user_obj = User(
+        user_obj = Cliente(
             username=username,
             email=email
         )
@@ -59,11 +56,12 @@ class UsuarioSerializer(ModelSerializer):
 
         return validated_data
 
+
 class LoginUsuarioSerializer(ModelSerializer):
     username=CharField(label='Usuario')
     password=CharField(label='Contraseña')
     class Meta:
-        model = User
+        model = Cliente
 
         fields=[
             'username',
@@ -78,10 +76,10 @@ class LoginUsuarioSerializer(ModelSerializer):
         username=data["username"]
         password=data["password"]
 
-        user = User.objects.filter(
+        cliente = Cliente.objects.filter(
             Q(username=username)).distinct()
-        if user.exists() and user.count() ==1:
-            user_obj=user.first()
+        if cliente.exists() and cliente.count() ==1:
+            user_obj=cliente.first()
         else:
             raise ValidationError("El usuario no existe.")
         if user_obj:
