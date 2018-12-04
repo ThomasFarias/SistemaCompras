@@ -44,7 +44,7 @@ class TiendaView(APIView):
 
 
 class ProductoView(APIView):
-    parser_classes = (JSONParser,)
+
     def get(self,request):
         productoss=Producto.objects.all()
         serializer=ProductoSerializer(productos,many=True)
