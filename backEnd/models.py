@@ -3,10 +3,6 @@ from django.db import models
 # Create your models here.
 
 
-class EstadoTienda(models.Model):
-	codigo_estado=models.IntegerField(primary_key=True)
-	estado=models.CharField(max_length=20)
-
 
 class Tienda(models.Model):
 	codigo_tienda=models.AutoField(primary_key=True)
@@ -15,7 +11,7 @@ class Tienda(models.Model):
 	direccion=models.CharField(max_length=40)	
 	region=models.CharField(max_length=20)
 	ciudad=models.CharField(max_length=20)
-	estado=models.ForeignKey(EstadoTienda,on_delete=models.CASCADE)
+	estado=models.BooleanField(default=False)
 
 class Producto(models.Model):
 	codigo_prod=models.AutoField(primary_key=True)

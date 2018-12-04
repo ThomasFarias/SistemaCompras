@@ -41,21 +41,6 @@ class TiendaView(APIView):
             serializer.save()
         
 
-class EstadoTiendaView(APIView):
-    parser_classes = (JSONParser,)
-    def get(self,request):
-        estados=EstadoTienda.objects.all()
-        serializer=EstadoSerializer(estados,many=True)
-        return Response(serializer.data)
-
-    def post(self,request):
-        serializer=EstadoSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        else:
-            serializer=EstadoSerializer()
-            return Response(serializer.data)
 
 class ProductoView(APIView):
     parser_classes = (JSONParser,)
