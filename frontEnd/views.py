@@ -18,10 +18,11 @@ def logout(request):
 @login_required(login_url='login')
 def Tiendas(request):
 	active_tab = 'tab2'
+	form=FormTienda()
 	if request.user.is_authenticated == True:
-		return render(request,"agregarTienda.html",{'active_tab':active_tab})
+		return render(request,"agregarTienda.html",{'form':form,'active_tab':active_tab})
 	else:
-		return render(request,"errorLogin.html",{'active_tab':active_tab})
+		return render(request,"errorLogin.html",{'form':form,'active_tab':active_tab})
 
 @login_required(login_url='login')
 def Comprar(request):

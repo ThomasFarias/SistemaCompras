@@ -2,8 +2,8 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Div, HTML
 from django.contrib.auth.models import User
-from django.utils.safestring import mark_safe          
-
+from django.utils.safestring import mark_safe     
+from backEnd.models import Tienda
 
 
 class FormRegistroUsuario(forms.ModelForm):
@@ -79,4 +79,17 @@ class FormLogin(forms.ModelForm):
 				)
 			),
 		)
+
+class FormTienda(forms.ModelForm):
+	class Meta:
+		model = Tienda
+		
+		fields = ('nombre_tienda', 'nombre_sucursal','direccion','region','ciudad')
+
+
+	def __init__(self, *args, submit_title="Enviar", **kwargs):
+		super().__init__(*args, **kwargs)
+		#user = super().save(commit=False) #snippet
+		self.helper=FormHelper()
+		self.helper.form_id= 'FormTienda'
        
