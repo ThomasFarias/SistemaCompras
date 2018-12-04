@@ -1,4 +1,5 @@
 from django.conf.urls import url
+from django.urls import include
 from . import views
 urlpatterns=[ 
     url(r'^$',views.Index),
@@ -8,6 +9,7 @@ urlpatterns=[
     url(r'^logout$',views.logout,name="logout"),
     url(r'^comprar$',views.Comprar,name="comprar"),
     url(r'^agregarTiendas$',views.Tiendas,name="agregarTiendas"),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
    
 
 ]

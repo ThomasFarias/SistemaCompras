@@ -7,13 +7,15 @@
 <div id="registro">
 			<div class="title">
 				<h1>Iniciar Sesión</h1>
+
+
 			</div>
 				<p>Ingrese sus credenciales y haga click en "Ingresar"</p>
+				<div id="error"> <h4 style="color:red">Datos incorrectos.</h4> </div>
+				
 				{% crispy form %}
-				{%if fail %}
-					<h4 style="color:red">Datos incorrectos.</h4>
-				{%endif%}
-		
+				  <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
+				
 </div>
     
 

@@ -19,6 +19,7 @@ $('#formLogin').submit(function(e)
 		},
 		error: function(errorThrown){
 			console.log(errorThrown);
+			$("#error").show();
 			}
 	})
 })
