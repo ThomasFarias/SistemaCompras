@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.db.models import Q
+from .models import Tienda, EstadoTienda, Producto
 
 
 from rest_framework.serializers import (
@@ -55,5 +56,28 @@ class UsuarioSerializer(ModelSerializer):
         user_obj.save()
 
         return validated_data
+
+
+class TiendaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tienda
+        fields = ('nombre_tienda',
+                  'nombre_sucursal','direccion','region','ciudad',
+                  'estado'
+                 )
+
+class EstadoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EstadoTienda
+        fields = ('codigo_estado',
+                  'estado'
+                 )
+
+class ProductoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Producto
+        fields = ('nombre_producto',
+                  'costo_presupuestado','costo_real','notas','tienda'
+                 )
 
 
