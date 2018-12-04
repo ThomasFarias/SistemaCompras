@@ -16,11 +16,18 @@ def Index(request):
 	return render(request,"index_bienvenida.html",{'active_tab':active_tab})
 
 def AgregarLista(request):
+	if request.method == 'POST':
+		form = ListaComprasForm(request.POST)
+		form['codigo_usuario'] = request.user
+		print(form['codigo_usuario'])
+
+	else:
+		form = ListaComprasForm()
+	
 	return render(request,"agregarLista.html")
 
 
-class AgregarListaView(PassRequestMixin, SuccessMessageMixin,
-                     generic.CreateView):
+class AgregarListaView(generic.CreateView):
     template_name = 'agregarLista.html'
     form_class = ListaComprasForm
     success_message = 'EXITO: Ha agregado una lista nueva.'
@@ -44,10 +51,19 @@ def Tiendas(request):
 @login_required(login_url='login')
 def Comprar(request):
 	active_tab = 'tab3'
-	if request.user.is_authenticated == True:
-		return render(request,"comprar.html",{'active_tab':active_tab})
+	if request.method == 'POST':
+		print('POST')
+		form = ListaComprasForm(request.POST)
+		form['codigo_usuario'] = request.user
+		print(form['codigo_usuario'])
+
 	else:
-		return render(request,"errorLogin.html",{'active_tab':active_tab})
+		form = ListaComprasForm()
+		print('NOPOST')
+		return render(request,"comprar.html")
+
+	
+	return render(request,"agregarLista.html")
 
 @login_required(login_url='login')
 def registroProducto(request,codigo):

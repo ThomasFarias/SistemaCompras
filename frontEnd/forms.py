@@ -146,7 +146,18 @@ class FormProducto(forms.ModelForm):
 				)
 			),
 		)
-class ListaComprasForm(PopRequestMixin, CreateUpdateAjaxMixin, forms.ModelForm):
-    class Meta:
-        model = Lista
-        fields = ['nombre_lista']
+
+class ListaComprasForm(forms.ModelForm):
+	class Meta:
+		model = Lista
+		fields = ['nombre_lista']
+
+	def __init__(self, *args, submit_title="Enviar", **kwargs):
+		super().__init__(*args, **kwargs)
+		#user = super().save(commit=False) #snippet
+		self.helper=FormHelper()
+		self.helper.layout = Layout(
+				Div('nombre_lista',),
+		)
+
+
