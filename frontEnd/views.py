@@ -41,4 +41,8 @@ def IniciarSesion(request):
 	active_tab = 'tab4'
 	fail = False
 	form=FormLogin()
+	if request.method == 'POST':
+		if request.user.is_authenticated == False:
+			fail = True
+			return render(request,'login.html',{'fail':fail,'form':form,	'active_tab':active_tab})
 	return render(request,'login.html',{'fail':fail,'form':form,	'active_tab':active_tab})
