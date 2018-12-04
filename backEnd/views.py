@@ -26,13 +26,3 @@ class ObtenerUsuariosAPIView(APIView):
         serializer=UsuarioSerializer(usuarios,many=True)
         return Response(serializer.data)
 
-class LoginUsuarioAPIView(APIView):
-    serializer_class=LoginUsuarioSerializer
-
-    def post(self,request,*args,**kwargs):
-        data=request.data
-        serializer=LoginUsuarioSerializer(data=data)
-        if serializer.is_valid(raise_exception=True):
-            new_data=serializer.data
-            return Response(new_data,status=HTTP_200_OK)
-        return Response(serializer.errors,status=HTTP_400_BAD_REQUEST)

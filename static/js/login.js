@@ -4,7 +4,7 @@ $('#formLogin').submit(function(e)
 	e.preventDefault();
 	$.ajax(
 	{
-		url:"http://localhost:8000/back/login",
+		url:"http://localhost:8000/back/rest-auth/login/",
 		type:'POST',
 		dataType: "json",
 		beforeSend: function (request) {

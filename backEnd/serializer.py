@@ -57,33 +57,3 @@ class UsuarioSerializer(ModelSerializer):
         return validated_data
 
 
-class LoginUsuarioSerializer(ModelSerializer):
-    username=CharField(label='Usuario')
-    password=CharField(label='Contraseña')
-    class Meta:
-        model = Cliente
-
-        fields=[
-            'username',
-            'password'       
-        ]
-        
-        extra_kwargs={"password":
-                        {"write_only":True}
-                        }
-    def validate(self,data):
-        user_obj=None
-        username=data["username"]
-        password=data["password"]
-
-        cliente = Cliente.objects.filter(
-            Q(username=username)).distinct()
-        if cliente.exists() and cliente.count() ==1:
-            user_obj=cliente.first()
-        else:
-            raise ValidationError("El usuario no existe.")
-        if user_obj:
-            if not user_obj.check_password(password):
-                raise ValidationError("Contraseña incorrecta")
-       
-        return data
