@@ -7,7 +7,7 @@ from django.db import models
 class Tienda(models.Model):
 	codigo_tienda=models.AutoField(primary_key=True)
 	nombre_tienda=models.CharField(max_length=30)
-	nombre_sucursal=models.CharField(max_length=30,null=True)
+	nombre_sucursal=models.CharField(max_length=30,null=True, blank=True)
 	direccion=models.CharField(max_length=40)	
 	region=models.CharField(max_length=20)
 	ciudad=models.CharField(max_length=20)
