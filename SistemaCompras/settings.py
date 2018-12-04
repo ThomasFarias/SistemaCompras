@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'backEnd.apps.BackendConfig',
     'frontEnd.apps.FrontendConfig',
-    'crispy_forms'
+    'crispy_forms',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -112,12 +113,15 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
-
     'django.contrib.auth.backends.ModelBackend',
 )
 
 SOCIAL_AUTH_GITHUB_KEY = '3fa662679bf710793b1d'
 SOCIAL_AUTH_GITHUB_SECRET = 'c421054f6de2fe87c27e8f31293b6293f7b2cd8c'
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1117375251764690'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '4ddbf0637c4545555598f219c8ee9e3e'  # App Secret
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
