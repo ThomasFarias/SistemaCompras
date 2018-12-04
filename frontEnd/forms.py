@@ -142,6 +142,7 @@ class FormProducto(forms.ModelForm):
 				)
 			),
 		)
+
 class ListaComprasForm(forms.ModelForm):
 	class Meta:
 		model = Lista
@@ -154,4 +155,5 @@ class ListaComprasForm(forms.ModelForm):
 		self.helper.layout = Layout(
 				Div('nombre_lista',),
 		)
+
 

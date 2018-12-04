@@ -61,7 +61,7 @@ class UsuarioSerializer(ModelSerializer):
 class TiendaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tienda
-        fields = ('nombre_tienda',
+        fields = ('codigo_tienda','nombre_tienda',
                   'nombre_sucursal','direccion','region','ciudad',
                   'estado'
                  )
