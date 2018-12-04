@@ -113,4 +113,4 @@ class FormTienda(forms.ModelForm):
 class ListaComprasForm(PopRequestMixin, CreateUpdateAjaxMixin, forms.ModelForm):
     class Meta:
         model = Lista
-        fields = ['nombre_lista']
+        fields = ['nombre_lista','codigo_usuario']
