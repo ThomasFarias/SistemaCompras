@@ -96,11 +96,11 @@ class FormTienda(forms.ModelForm):
 		self.helper.layout = Layout(
 			
 			Div(
-				Div('nombre_tienda', css_id='nombre_tienda'),
-				Div('nombre_sucursal', css_id='nombre_sucursal'),
-				Div('direccion', css_id='direccion'),
-				Div('region', css_id='region'),
-				Div('ciudad', css_id='ciudad'),
+				Div('nombre_tienda',),
+				Div('nombre_sucursal',),
+				Div('direccion', ),
+				Div('region', ),
+				Div('ciudad',),
 				css_class = 'column'
 			),
 			Div(

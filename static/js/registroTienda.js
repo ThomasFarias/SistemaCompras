@@ -10,7 +10,7 @@ $('#FormTienda').submit(function(e)
 		beforeSend: function (request) {
 			request.setRequestHeader("X-CSRFToken", $('input[name="csrfmiddlewaretoken"]').val());
 		},
-		data: {'nombre_tienda': $("#nombre_tienda").val(),'nombre_sucursal':$("#nombre_sucursal").val(),'direccion':$("#direccion").val(),'region':$("#region").val(),'ciudad':$("#ciudad").val()},
+		data: {'nombre_tienda': $("#id_nombre_tienda").val(),'nombre_sucursal':$("#id_nombre_sucursal").val(),'direccion':$("#id_direccion").val(),'region':$("#id_region").val(),'ciudad':$("#id_ciudad").val()},
         success: function (response) 
         {
             alert("Tienda agregada");
@@ -23,4 +23,3 @@ $('#FormTienda').submit(function(e)
     })
     console.log($("#nombre_tienda"));
 })
-       

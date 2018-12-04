@@ -29,7 +29,6 @@ class ObtenerUsuariosAPIView(APIView):
         return Response(serializer.data)
 
 class TiendaView(APIView):
-    parser_classes = (JSONParser,)
     def get(self,request):
         tiendas=Tienda.objects.all()
         serializer=TiendaSerializer(tiendas,many=True)
