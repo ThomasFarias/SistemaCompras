@@ -22,11 +22,28 @@
   <tbody>
     {% for p in productos %}
      <tr>
-      <th scope="row">{{r.nombre_producto}}</th>
+      <th scope="row">{{p.nombre_producto}}</th>
+      {% if p.costo_presupuestado is not None %}
       <td> {{p.costo_presupuestado}} </td>
+      {%else%}
+      <td>No ingresado </td>
+      {%endif%}
+      
+      {% if p.costo_real is not None %}
       <td> {{p.costo_real}} </td>
+      {%else%}
+      <td>No ingresado </td>
+      {%endif%}
+      {% if p.tienda is not None %}
       <td> {{p.tienda}} </td>
+      {%else%}
+      <td>No ingresado </td>
+      {%endif%}
+      {% if p.notas is not None %}
       <td> {{p.notas}} </td>
+      {%else%}
+      <td>No ingresado </td>
+      {%endif%}
       
 
           <td>
