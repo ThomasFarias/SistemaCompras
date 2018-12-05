@@ -100,6 +100,7 @@ def comprarProducto(request,codigo):
 			data=form.cleaned_data
 			producto.costo_real=data.get("costo_real")
 			producto.save()		
+			return render(request,'Comprar.html')
 	else:
 		form=FormComprarProducto(instance=producto)
 		

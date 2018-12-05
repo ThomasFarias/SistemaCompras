@@ -175,7 +175,7 @@ class ListaComprasForm(forms.ModelForm):
 				
 				
 		)
-class FormComprarProducto(forms.ModelForm):   
+class FormComprarProducto(forms.ModelForm):  
 	
                                
 	class Meta:
@@ -196,6 +196,7 @@ class FormComprarProducto(forms.ModelForm):
 		self.fields['costo_presupuestado'].widget.attrs['readonly']=True
 		self.fields['notas'].widget.attrs['readonly']=True
 		self.fields['nombre_producto'].widget.attrs['readonly']=True
+		self.fields['tienda'].widget.attrs ['readonly']=True
 		
 		
 		self.helper.layout = Layout(

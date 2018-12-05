@@ -23,3 +23,4 @@ $('#FormTienda').submit(function(e)
     })
     console.log($("#nombre_tienda"));
 })
+
