@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% block comprar %}
-
-
+{% load static %}
+<script src="{% static '/js/listas.js' %}"></script> 
 
 <div id="bienvenida">
 			<div class="title">
@@ -9,36 +9,8 @@
 			</div>
 			<p>Seleccione o agregue una lista y haga click en siguiente. </p>
 			
-			<div class="tabla-compras">
-			<table id="tablePreview" class="table table-striped table-bordered">
-<!--Table head-->
-  <thead>
-    <tr>
-      <th>Lista</th>
-      <th>Productos</th>
-      <th>Comprados</th>
-      <th>Presupuesto</th>
-      <th>Valor Real</th>
-    </tr>
-  </thead>
-  <tbody>
+			<div id='tablacompras'>
 
-     <tr>
-      <th>test</th>
-      <td> 1 </td>
-      <td> 2 </td>
-      <td> 3 </td>
-      <td> 4 </td>
-   
-    <td>
-    <a class="btn btn-secondary" href=""role="button">Agregar</a>
-
-    </td>
-</tr>
-
-  </tbody>
-  <!--Table body-->
-</table>
 </div>
 <!--Table-->
 
@@ -64,5 +36,7 @@ $(document).ready(function() {
 
 });
 </script>
+
+
 
 {% endblock %}

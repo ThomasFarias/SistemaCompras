@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.db.models import Q
-from .models import Tienda, Producto
+from .models import Tienda, Producto, Lista
 
 
 from rest_framework.serializers import (
@@ -72,6 +72,12 @@ class ProductoSerializer(serializers.ModelSerializer):
         model = Producto
         fields = ('lista','tienda','nombre_producto',
                   'costo_presupuestado','costo_real','notas',
+                 )
+
+class ListaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lista
+        fields = ('nombre_lista','codigo_lista','codigo_usuario',
                  )
 
 

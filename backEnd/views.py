@@ -45,8 +45,6 @@ class TiendaView(APIView):
 
 class ProductoView(APIView):
 
-  
-
     def get(self,request):
         productos=Producto.objects.all()
         serializer=ProductoSerializer(productos,many=True)
@@ -62,7 +60,10 @@ class ProductoView(APIView):
             serializer=ProductoSerializer()
             return Response(serializer.data)
 
+class ListaView(APIView):
 
-
-
+    def get(self,request):
+        lista=Lista.objects.all()
+        serializer=ListaSerializer(lista,many=True)
+        return Response(serializer.data)
 
