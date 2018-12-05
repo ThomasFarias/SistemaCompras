@@ -66,10 +66,10 @@ def Comprar(request):
 	else:
 		form = ListaComprasForm()
 		print('NOPOST')
-		return render(request,"comprar.html",{'usuario':request.user})
+		return render(request,"comprar.html",{'usuario':request.user,'active_tab':active_tab})
 
 	
-	return render(request,"agregarLista.html")
+	return render(request,"agregarLista.html",{'active_tab':active_tab})
 
 @login_required(login_url='login')
 def registroProducto(request,codigo):
