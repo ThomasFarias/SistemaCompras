@@ -81,6 +81,7 @@ class FormLogin(forms.ModelForm):
 		)
 
 class FormTienda(forms.ModelForm):
+
 	class Meta:
 		model = Tienda
 		
@@ -123,6 +124,7 @@ class FormProducto(forms.ModelForm):
 		
 		super().__init__(*args, **kwargs)
 		#user = super().save(commit=False) #snippet
+		mi_id = self.initial.get('tienda')
 		self.helper=FormHelper()
 		self.helper.form_id= 'FormProducto'
 		self.fields['costo_real'].widget = forms.TextInput()
@@ -133,7 +135,7 @@ class FormProducto(forms.ModelForm):
 			
 			Div(
 				
-				Div('tienda',),
+				Div('nombre_tienda', ),
 				Div('nombre_producto', ),
 				Div('costo_presupuestado', ),
 				Div('costo_real',),
@@ -158,6 +160,18 @@ class ListaComprasForm(forms.ModelForm):
 		self.helper=FormHelper()
 		self.helper.layout = Layout(
 				Div('nombre_lista',),
+				Div(
+					ButtonHolder(
+						Submit('cerrar', 'Cerrar', css_class=" btn-secondary col-sm-16 boton-uno" ,),
+					),
+
+					ButtonHolder(
+						Submit('save', 'Agregar', css_class=" btn-dark col-sm-16 boton-dos",),
+					),
+					css_class='row dos-botones'
+				), 
+				
+				
 		)
 
 
