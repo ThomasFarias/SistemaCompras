@@ -79,5 +79,7 @@ class ListaSerializer(serializers.ModelSerializer):
         model = Lista
         fields = ('nombre_lista','codigo_lista','codigo_usuario',
                  )
+        
+
 
 

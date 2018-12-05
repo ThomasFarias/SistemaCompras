@@ -64,6 +64,6 @@ class ListaView(APIView):
 
     def get(self,request):
         lista=Lista.objects.all()
-        serializer=ListaSerializer(lista,many=True)
+        lista_filtrada = Lista.objects.filter(codigo_usuario=request.user.id)
+        serializer=ListaSerializer(lista_filtrada,many=True)
         return Response(serializer.data)
-

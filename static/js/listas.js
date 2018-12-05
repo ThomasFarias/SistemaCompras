@@ -3,9 +3,14 @@ $(document).ready(function()
 	console.log("CREANDO TABLE");	
 	$.ajax(
 	{
+
 		url: "http://localhost:8000/back/lista",
+		type: 'GET',
+
 		success: function(result)
 		{
+			
+
 			console.log("CREANDO TABLE 2");	
 			$('#tablacompras').append("Listas de compras");
 			$('#tablacompras').append(
@@ -20,6 +25,7 @@ $(document).ready(function()
 						</tr>\
 					</thead>"
 			);
+			
 			$.each(result,function(i,items)
 			{
 				$("#tablePreview").append('<tr>');

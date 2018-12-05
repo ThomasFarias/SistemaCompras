@@ -66,7 +66,7 @@ def Comprar(request):
 	else:
 		form = ListaComprasForm()
 		print('NOPOST')
-		return render(request,"comprar.html")
+		return render(request,"comprar.html",{'usuario':request.user})
 
 	
 	return render(request,"agregarLista.html")

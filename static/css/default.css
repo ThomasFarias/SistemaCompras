@@ -403,6 +403,15 @@
 
 	}
 
+	#comprar
+	{
+		position: relative;
+		text-align: top;
+		margin: auto;
+		padding: 0% 0;
+
+	}
+
 		#agregar-tienda
 	{
 		position: relative;
@@ -575,7 +584,7 @@
 		overflow: hidden;
 		vertical-align:middle;
 		float: right;
-		height:100vh;
+		
 		width: 800px;
 		padding: 3em 50px 5em 50px;
 		background: #FFF;
