@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('back/',include("backEnd.urls")),
     path('',include("frontEnd.urls")),
+    path('',include('pwa.urls')),
 ]
