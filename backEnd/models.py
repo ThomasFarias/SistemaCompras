@@ -14,6 +14,9 @@ class Tienda(models.Model):
 	ciudad=models.CharField(max_length=20)
 	estado=models.BooleanField(default=False)
 
+	def __str__(self):
+		return self.nombre_tienda
+
 class Lista(models.Model):
 	codigo_lista=models.AutoField(primary_key=True)
 	nombre_lista=models.CharField(max_length=30)

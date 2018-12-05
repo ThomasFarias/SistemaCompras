@@ -74,13 +74,19 @@ def Comprar(request):
 @login_required(login_url='login')
 def registroProducto(request,codigo):
 	form=FormProducto(request.POST)
+	#tienda=Tenda.objects.get(codigo_lista=codigo)
+	#form.instance.tienda = 
+	print(form.__dict__["fields"])
 	if form.is_valid():		
+		print('FORMA VALIDA')
 		lista=Lista.objects.get(codigo_lista=codigo)
 		data=form.cleaned_data
 		producto=Producto(nombre_producto=data.get("nombre_producto"),costo_presupuestado=data.get("costo_presupuestado"),costo_real=data.get("costo_real"),notas=data.get("notas"),tienda=data.get("tienda"),lista=lista)
 		producto.save()	
 		return render(request,'agregarProducto.html',{'form': form})	
 	else:
+		print('FORMA NO VALIDA')
+		form.is_valid()
 		form=FormProducto()
 		return render(request,'agregarProducto.html',{'form': form})
 
