@@ -34,11 +34,16 @@
       {%else%}
       <td>No ingresado </td>
       {%endif%}
+
       {% if p.tienda is not None %}
       <td> {{p.tienda}} </td>
       {%else%}
       <td>No ingresado </td>
       {%endif%}
+   
+      <td>  {{p.tienda.nombre_sucursal}}</td>
+
+
       {% if p.notas is not None %}
       <td> {{p.notas}} </td>
       {%else%}

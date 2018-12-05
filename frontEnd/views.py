@@ -117,8 +117,8 @@ def ListaProductos(request,codigo):
 	else:
 		form=FormProducto()
 		print('HOLA')
-		#productos = Producto.objects.filter(lista=Lista.objects.get(codigo_lista=codigo))
-		productos = Producto.objects.all()
+		productos = Producto.objects.filter(lista=Lista.objects.get(codigo_lista=codigo))
+		#productos = Producto.objects.all()
 		return render(request,'listaProductos.html',{'productos': productos})
 		
 

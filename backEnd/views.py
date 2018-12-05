@@ -6,6 +6,7 @@ from .serializer import  *
 from .models import Tienda
 from rest_framework.parsers import JSONParser
 from django.contrib.auth import get_user_model
+from rest_framework import filters
 
 from rest_framework.generics import (
     CreateAPIView
@@ -47,7 +48,9 @@ class ProductoView(APIView):
 
     def get(self,request):
         productos=Producto.objects.all()
+        queryset = Producto.objects.all()
         serializer=ProductoSerializer(productos,many=True)
+        filter_backends = (filters.SearchFilter,)
         return Response(serializer.data)
 
     def post(self,request,codigo):
