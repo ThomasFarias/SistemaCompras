@@ -11,6 +11,7 @@ Released   : 20130902
 
 -->
 {% load static %}
+{% load pwa %}
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -35,6 +36,7 @@ Released   : 20130902
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
 </head>
+{% progressive_web_app_meta %}
 <body>
 <div id="page" class="container">
 	<div id="header">
