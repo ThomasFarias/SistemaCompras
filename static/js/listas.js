@@ -22,6 +22,7 @@ $(document).ready(function()
 							<th>Productos Comprados</th>\
 							<th>Presupuestado</th>\
 							<th>Costo Real</th>\
+							<th></th>\
 						</tr>\
 					</thead>"
 			);
@@ -34,8 +35,9 @@ $(document).ready(function()
 				$("#tablePreview").append("<th scope='row'>"+i+"</th>");
 				$("#tablePreview").append("<th scope='row'>"+i+"</th>");
 				$("#tablePreview").append("<th scope='row'>"+i+"</th>");
-				$("#tablePreview").append("<th scope='row'>"+i+"</th>");
+				$("#tablePreview").append("<th scope='row'>");
 				$("#tablePreview").append("<a class='btn btn-secondary' href=\"/agregarProductos/"+result[i].codigo_lista+"/\" role='button'>Comprar</a>");
+				$("#tablePreview").append("</th>");
 				$("#tablePreview").append("</tr>");
 				$("#tablePreview").append("</tbody>");         
 			});

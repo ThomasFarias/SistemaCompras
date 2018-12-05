@@ -530,6 +530,16 @@
 
 	}
 
+.btn
+	{
+				float:center;
+				justify-content: center;
+				margin:1em;
+				vertical-align:middle;
+
+
+	}
+
 .lista-nueva
 	{
 
