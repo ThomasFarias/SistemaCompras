@@ -25,17 +25,17 @@ $(document).ready(function()
 						</tr>\
 					</thead>"
 			);
+
 			
 			$.each(result,function(i,items)
 			{
 				$("#tablePreview").append('<tr>');
-				$("#tablePreview").append("<th scope='row'>"+result[i].nombre_lista+"</th>")
-				$("#tablePreview").append("<th scope='row'>"+i+"</th>")
-				$("#tablePreview").append("<th scope='row'>"+i+"</th>")
-				$("#tablePreview").append("<th scope='row'>"+i+"</th>")
-				$("#tablePreview").append("<th scope='row'>"+i+"</th>")
-
-
+				$("#tablePreview").append("<th scope='row'> <a href=\"/listaProductos/"+result[i].codigo_lista+"/\">"+result[i].nombre_lista+"</a></th>");
+				$("#tablePreview").append("<th scope='row'>"+i+"</th>");
+				$("#tablePreview").append("<th scope='row'>"+i+"</th>");
+				$("#tablePreview").append("<th scope='row'>"+i+"</th>");
+				$("#tablePreview").append("<th scope='row'>"+i+"</th>");
+				$("#tablePreview").append("<a class='btn btn-secondary' href=\"/agregarProductos/"+result[i].codigo_lista+"/\" role='button'>Comprar</a>");
 				$("#tablePreview").append("</tr>");
 				$("#tablePreview").append("</tbody>");         
 			});

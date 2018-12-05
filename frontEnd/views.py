@@ -80,10 +80,23 @@ def registroProducto(request,codigo):
 		producto=Producto(nombre_producto=data.get("nombre_producto"),costo_presupuestado=data.get("costo_presupuestado"),costo_real=data.get("costo_real"),notas=data.get("notas"),tienda=data.get("tienda"),lista=lista)
 		producto.save()	
 		return render(request,'agregarProducto.html',{'form': form})	
-		
 	else:
 		form=FormProducto()
 		return render(request,'agregarProducto.html',{'form': form})
+
+@login_required(login_url='login')
+def ListaProductos(request,codigo):
+	if request.method == 'POST':
+		form=FormProducto(request.POST)
+		if form.is_valid():		
+			return render(request,'agregarProducto.html',{'form': form})
+	else:
+		form=FormProducto()
+		print('HOLA')
+		#productos = Producto.objects.filter(lista=Lista.objects.get(codigo_lista=codigo))
+		productos = Producto.objects.all()
+		return render(request,'listaProductos.html',{'productos': productos})
+		
 
     
 def registroUsuario(request):
