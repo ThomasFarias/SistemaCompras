@@ -1,6 +1,5 @@
-
+{% load crispy_forms_tags %}
 <form method="post" action="">
-  {% csrf_token %}
 
  <div class="modal-header">
     <h5 class="modal-title">Crear Lista de Compras</h5>
@@ -10,20 +9,9 @@
   </div>
 
   <div class="modal-body">
-    {% for field in form %}
-      <div class="form-group{% if field.errors %} invalid{% endif %}">
-        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-        {{ field }}
-        {% for error in field.errors %}
-          <p class="help-block">{{ error }}</p>
-        {% endfor %}
+   
+
+{% crispy form %}
+
       </div>
-    {% endfor %}
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-    <a class="btn btn-secondary btn-dark" href="{% url 'comprar' %}"role="button">Agregar</a>
-  </div>
-
 </form>

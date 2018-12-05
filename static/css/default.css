@@ -527,6 +527,30 @@
 		float:left;
 
 	}
+.dos-botones
+{
+
+	display: flex;
+	margin-top: 1em;
+	justify-content:center;
+
+
+}
+
+.boton-uno
+	{
+		margin-right: 1em;
+		width:5em;
+		max-width: 5em;
+
+	}
+
+.boton-dos
+	{
+		width:5em;
+		max-width: 5em;
+
+	}
 
 
 

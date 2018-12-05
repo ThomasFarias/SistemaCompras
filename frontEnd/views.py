@@ -7,6 +7,7 @@ from bootstrap_modal_forms.mixins import PassRequestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import generic
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -28,10 +29,15 @@ def AgregarLista(request):
 
 
 class AgregarListaView(generic.CreateView):
-    template_name = 'agregarLista.html'
-    form_class = ListaComprasForm
-    success_message = 'EXITO: Ha agregado una lista nueva.'
-    success_url = reverse_lazy('comprar')
+	template_name = 'agregarLista.html'
+	form_class = ListaComprasForm
+	success_message = 'EXITO: Ha agregado una lista nueva.'
+	success_url = reverse_lazy('comprar')
+
+	def form_valid(self, form):
+		usuario = self.request.user
+		form.instance.codigo_usuario = usuario
+		return super(AgregarListaView, self).form_valid(form)
 
 
 def logout(request):
