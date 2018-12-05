@@ -175,13 +175,13 @@ class ListaComprasForm(forms.ModelForm):
 				
 				
 		)
-class FormComprarProducto(forms.ModelForm):   
+class FormComprarProducto(forms.ModelForm):  
 	
                                
 	class Meta:
 		model = Producto
 		
-		fields = ('nombre_producto', 'costo_presupuestado','costo_real','notas')
+		fields = ('tienda','nombre_producto', 'costo_presupuestado','costo_real','notas')
 
 
 	def __init__(self, *args, submit_title="Enviar", **kwargs):
@@ -196,13 +196,14 @@ class FormComprarProducto(forms.ModelForm):
 		self.fields['costo_presupuestado'].widget.attrs['readonly']=True
 		self.fields['notas'].widget.attrs['readonly']=True
 		self.fields['nombre_producto'].widget.attrs['readonly']=True
+		self.fields['tienda'].widget.attrs ['readonly']=True
 		
 		
 		self.helper.layout = Layout(
 			
 			Div(
 				
-			
+				Div('tienda', ),
 				Div('nombre_producto', ),
 				Div('costo_presupuestado', ),
 				Div('costo_real',),
@@ -211,7 +212,7 @@ class FormComprarProducto(forms.ModelForm):
 			),
 			Div(
 				ButtonHolder(
-						Submit('save', 'Agregar', css_class="BotonEnviar btn-secondary")
+						Submit('save', 'Comprar', css_class="BotonEnviar btn-secondary")
 				)
 			),
 		)
