@@ -112,6 +112,8 @@ class FormTienda(forms.ModelForm):
 		)
 
 class FormProducto(forms.ModelForm):
+	tienda = forms.ChoiceField(                         
+                                required=True)
 	class Meta:
 		model = Producto
 		
@@ -119,6 +121,7 @@ class FormProducto(forms.ModelForm):
 
 
 	def __init__(self, *args, submit_title="Enviar", **kwargs):
+		
 		super().__init__(*args, **kwargs)
 		#user = super().save(commit=False) #snippet
 		mi_id = self.initial.get('tienda')
@@ -126,6 +129,7 @@ class FormProducto(forms.ModelForm):
 		self.helper.form_id= 'FormProducto'
 		self.fields['costo_real'].widget = forms.TextInput()
 		self.fields['costo_presupuestado'].widget = forms.TextInput()
+		
 		
 		self.helper.layout = Layout(
 			
