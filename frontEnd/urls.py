@@ -11,7 +11,8 @@ urlpatterns=[
     url(r'^agregarLista$',views.AgregarLista,name="agregarLista"),
     url(r'^agregarTiendas$',views.Tiendas,name="agregarTiendas"),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
-    url(r'^agregarProductos/(?P<codigo>\d+)/$',views.registroProducto,name="agregarProductos"),
+    url(r'^agregarProductos/(?P<codigo>\d+)/$',views.registroProducto,name="agregarProductos"),    
+    url(r'^comprarProductos/(?P<codigo>\d+)/$',views.comprarProducto,name="comprarProductos"),
     url(r'^listaProductos/(?P<codigo>\d+)/$',views.ListaProductos,name="listaProductos"),
     path('agregarLista/', views.AgregarListaView.as_view(), name='crear_lista'),  # <--
     

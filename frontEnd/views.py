@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .forms import *
 from django.contrib.auth import authenticate, logout as django_logout
 from django.contrib.auth.decorators import login_required
-from backEnd.models import Producto, Lista
+from backEnd.models import Producto, Lista, Tienda
 from bootstrap_modal_forms.mixins import PassRequestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import generic
@@ -83,6 +83,24 @@ def registroProducto(request,codigo):
 	else:
 		form=FormProducto()
 		return render(request,'agregarProducto.html',{'form': form})
+
+@login_required(login_url="login")
+def comprarProducto(request,codigo):
+	producto=Producto.objects.get(codigo_prod=codigo)
+	form=FormComprarProducto(request.POST)	
+	if request.method=='POST':
+		if form.is_valid():
+							
+			data=form.cleaned_data
+			producto.costo_real=data.get("costo_real")
+			producto.save()		
+	else:
+		form=FormComprarProducto(instance=producto)
+		
+
+	
+	return render(request,'comprarProducto.html',{'form': form})
+	
 
 @login_required(login_url='login')
 def ListaProductos(request,codigo):
