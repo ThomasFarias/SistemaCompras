@@ -143,6 +143,23 @@
 		{
 			font-size: 60px;
 		}
+		#registro
+		{
+			background-color:white;
+			margin-left:35%;
+			font-size:30px;
+		}
+		#registro h1
+		{
+			font-size:60px;
+		}
+		#registro #submit-id-save
+		{
+			
+			width:300px;
+			height:100px;
+			font-size:30px;
+		}
 		
 		#comprar
 		{
