@@ -145,7 +145,20 @@
 			font-size: 60px;
 		}
 		
-
+		#comprar
+		{
+			font-size:20px;
+		}
+		#comprar h1
+		{
+			font-size:40px;
+		}
+		#comprar p {
+			font-size:30px;
+		}
+		#comprar table{
+			height:400px;
+		}
 		#registro
 		{
 			background-color:white;
@@ -192,7 +205,7 @@
 			
 			
 				display: block;
-				height:200px;
+				
 				overflow-x: scroll;
 			  }
 		}
