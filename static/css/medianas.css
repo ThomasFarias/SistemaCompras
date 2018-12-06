@@ -200,10 +200,12 @@
 			height:100px;
 			font-size:30px;
 		}
-		#tablacompras table
+	
+		
+		#comprar table
 		{	
 			
-			
+				
 				display: block;
 				
 				overflow-x: scroll;
