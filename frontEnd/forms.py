@@ -127,6 +127,10 @@ class FormProducto(forms.ModelForm):
 		#user = super().save(commit=False) #snippet
 		#mi_id = self.initial.get('tienda')
 		self.helper=FormHelper()
+		print("MIS OPCIONES 1")
+		maintainer_choices = Tienda.objects.filter(estado=True)
+		print(maintainer_choices)
+		self.fields['tienda'].queryset = maintainer_choices
 		self.helper.form_id= 'FormProducto'
 		self.fields['costo_real'].widget = forms.TextInput()
 		self.fields['costo_presupuestado'].widget = forms.TextInput()
