@@ -76,6 +76,7 @@
 	
 		#menu
 		{
+			font-size:30px;
 			width:100%;
 		}
 		
@@ -143,10 +144,36 @@
 		{
 			font-size: 60px;
 		}
+		
+
 		#registro
 		{
 			background-color:white;
 			margin-left:35%;
+			font-size:30px;
+		}
+		#agregar-tienda 
+		{
+			font-size:35px;
+		}
+		#agregar-tienda p 
+		{
+			margin-left:35%;
+		}
+		#agregar-tienda h1{
+			margin-left:35%;
+			font-size:50px;
+		}
+		#agregar-tienda form
+		{
+			margin-left:35%;
+			
+		}
+		#agregar-tienda #submit-id-save
+		{
+			
+			width:300px;
+			height:100px;
 			font-size:30px;
 		}
 		#registro h1
@@ -160,13 +187,22 @@
 			height:100px;
 			font-size:30px;
 		}
-		
+		#tablacompras table
+		{	
+			
+			
+				display: block;
+				height:200px;
+				overflow-x: scroll;
+			  }
+		}
 		#comprar
 		{
 			position: relative;
 			text-align: top;
 			margin: auto;
 			padding: 0% 0;
+			margin-left:40%;
 	
 		}
 	
