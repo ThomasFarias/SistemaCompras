@@ -154,7 +154,6 @@ html, body
     font-size:9px;
 
 
-
 	}
 
 	th, td 
@@ -163,6 +162,15 @@ html, body
      
 	}
 
+	#tablacompras table
+		{	
+			
+			
+				display: block;
+				
+				overflow-x: scroll;
+			  
+		}
 
 
 	#bienvenida
