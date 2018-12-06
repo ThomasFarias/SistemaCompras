@@ -1,4 +1,4 @@
-@media screen and (max-width: 800px) {
+@media(min-width: 601px) and (max-width: 800px) {
 	
 	#menu
 	{
@@ -119,6 +119,7 @@
 		float: top;
 		width: 100%;
 		padding: 1em 0em;
+		background-color: white;
 	}
 
 	#bienvenida
@@ -146,6 +147,49 @@
 		margin: auto;
 		padding: 0% 0;
 
+	}
+
+
+/*********************************************************************************/
+/* Logo                                                                          */
+/*********************************************************************************/
+
+	#logo
+	{
+		text-align: center;
+		margin-bottom: 1em;
+		
+	}
+	
+	#logo h1
+	{
+		display: block;
+	}
+	
+	#logo a
+	{
+		text-decoration: none;
+		color: #FFF;
+		font-size: 0.7em;
+	}
+	
+	#logo span
+	{
+		display:none;
+	}
+
+	#logo span a
+	{
+		color: rgba(255,255,255,0.5);
+	}
+	
+	#logo img
+	{
+		display: inline-block;
+		margin-bottom: 0;
+		border-radius: 50%;
+		display: none;
+		
 	}
 
 
